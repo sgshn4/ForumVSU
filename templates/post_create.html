@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Создание поста</title>
+</head>
+<body>
+    <h1>Создать новый пост</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Создать</button>
+    </form>
+    <a href="{% url 'post_list' %}">Назад</a>
+</body>
+</html>
