@@ -9,6 +9,13 @@ def post_list(request):
     posts = post.Post.objects.all().order_by('-created_at')
     return render(request, 'post_list.html', {'posts': posts})
 
+def login(request):
+    return render(request, 'login.html')
+
+
+def register(request):
+    return render(request, 'register.html')
+
 # Просмотр одного поста с комментариями
 def post_detail(request, pk):
     post_unit = get_object_or_404(post.Post, pk=pk)
