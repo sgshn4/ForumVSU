@@ -27,7 +27,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application definition
-
+LOGIN_URL = '/accounts/login/'
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'Forum',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -73,34 +74,6 @@ WSGI_APPLICATION = 'Forum.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'user': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'user.sqlite3',
-    },
-    'message': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'message.sqlite3',
-    },
-    'role': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'role.sqlite3',
-    },
-    'topic': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'topic.sqlite3',
-    },
-    'topic_in_category': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'topic_in_category.sqlite3',
-    },
-    'content': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'content.sqlite3',
-    },
-    'category': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'category.sqlite3',
-    },
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',

@@ -1,3 +1,5 @@
+from django.contrib.auth import logout
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, get_object_or_404, redirect
 from . import post
 from . import comment
@@ -8,13 +10,6 @@ from django.contrib.auth.decorators import login_required
 def post_list(request):
     posts = post.Post.objects.all().order_by('-created_at')
     return render(request, 'post_list.html', {'posts': posts})
-
-def login(request):
-    return render(request, 'login.html')
-
-
-def register(request):
-    return render(request, 'register.html')
 
 # Просмотр одного поста с комментариями
 def post_detail(request, pk):
