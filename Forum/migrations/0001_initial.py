@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -31,7 +30,58 @@ class Migration(migrations.Migration):
                 ('content', models.TextField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='Forum.post')),
+                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments',
+                                           to='Forum.post')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Role',
+            fields=[
+                ('role_id',
+                 models.IntegerField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField()),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Category',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('content', models.TextField()),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments',
+                                           to='Forum.post')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='topic_in_category',
+            fields=[
+                ('id', models.IntegerField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('topic_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Forum.post')),
+                ('category_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Forum.post')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Content',
+            fields=[
+                ('content_id',
+                 models.IntegerField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('message_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Forum.comment')),
+                ('url', models.TextField()),
+                ('type', models.TextField())
+            ],
+        ),
+        migrations.CreateModel(
+            name='User',
+            fields=[
+                ('user_id',
+                 models.IntegerField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('role_id', models.IntegerField()),
+                ('nickname', models.CharField(max_length=50)),
+                ('description', models.TextField()),
+                ('avatar', models.TextField()),
+                ('login', models.TextField()),
+                ('password', models.TextField()),
             ],
         ),
 

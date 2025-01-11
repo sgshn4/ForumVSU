@@ -14,7 +14,7 @@ def post_list(request):
 # Просмотр одного поста с комментариями
 def post_detail(request, pk):
     post_unit = get_object_or_404(post.Post, pk=pk)
-    comments = post.comments.all()
+    comments = post_unit.comments.all()
     comment_form = CommentForm()
 
     if request.method == 'POST' and request.user.is_authenticated:
